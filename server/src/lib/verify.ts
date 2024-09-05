@@ -2,6 +2,7 @@ import forge from 'node-forge'
 import { groth16 } from 'snarkjs'
 import { config } from './config'
 import { attributeToPosition, countryCodes, defaultOptions } from './constants'
+import { runSnarkjsVerification } from './run-snarkjs-verification'
 import { getSignatureAlgorithm } from './vendor/certificate'
 import { getVkey } from './vendor/circuit'
 import { bigIntToHex, castToScope, splitToWords, unpackReveal } from './vendor/conversion'
@@ -64,11 +65,9 @@ const verifyProof = async (
   proof: any,
   report: OpenPassportVerifierReport,
 ) => {
-  groth16.verify(vkey, publicSignals, proof).then(verified_prove => {
-    if (verified_prove === false)
+  groth16.verify(vkey, publicSignals, proof).then(valid => {
+    if (valid === false)
       report.exposeAttribute('proof')
-  }).catch(e => {
-    console.error(e)
   })
   console.log('\x1b[32m%s\x1b[0m', `- proof verified`)
 }
@@ -106,15 +105,16 @@ const _verify = async (
   verifyDate(parsedPublicSignals.current_date, report)
 
   const unpackedReveal = unpackReveal(parsedPublicSignals.revealedData_packed)
-  verifyRequirements(opts.requirements, unpackedReveal, report)
+  verifyRequirements(opts.requirements!, unpackedReveal, report)
 
-  await verifyProof(vkey, inputs.dscProof.publicSignals, inputs.dscProof.proof, report)
+  const valid = await runSnarkjsVerification(vkey, inputs.dscProof.publicSignals, inputs.dscProof.proof)
+  if (valid === false) report.exposeAttribute('proof')
 
   report.nullifier = bigIntToHex(BigInt(parsedPublicSignals.nullifier))
   report.user_identifier = bigIntToHex(BigInt(parsedPublicSignals.user_identifier))
 
   // 5. Verify the DSC
-  verifyCertificate(inputs.dsc, parsedPublicSignals.pubKey, opts.dev_mode)
+  verifyCertificate(inputs.dsc, parsedPublicSignals.pubKey, opts.dev_mode!)
 
   return report
 }

@@ -16,10 +16,13 @@
     "enabled": false,
   },
   "overrides": [
-    { "include": ["client/src/main.tsx"], "linter": { "rules": { "style": { "noNonNullAssertion": "off" } } } },
+    {
+      "include": ["client/src/main.tsx", "server/src/lib/verify.ts"],
+      "linter": { "rules": { "style": { "noNonNullAssertion": "off" } } },
+    },
     // TODO: improve types
     {
-      "include": ["client/src/lib/types.ts", "server/src/lib/verify.ts"],
+      "include": ["client/src/lib/types.ts", "server/src/lib/verify.ts", "server/src/lib/run-snarkjs-verification.ts"],
       "linter": { "rules": { "suspicious": { "noExplicitAny": "off" } } },
     },
     // TODO: improve types
