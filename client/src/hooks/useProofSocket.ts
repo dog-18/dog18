@@ -31,7 +31,7 @@ export const useProofSocket = (
           setProofStep(ProofStep.PROOF_GENERATION_STARTED)
           break
         case SocketStatus.PROOF_GENERATED:
-          setProofStep(ProofStep.PROOF_GENERATED)
+          console.log({ proof })
           setProof(proof)
           break
       }

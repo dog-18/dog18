@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 function App() {
   const { error, valid } = useVerify()
   useEffect(() => {
-    if (valid)
+    if (valid === true)
       alert('Valid')
     if (error)
       alert('Error')

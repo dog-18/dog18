@@ -6,7 +6,7 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["dist"],
+    "ignore": ["dist", "server/src/lib/vendor"],
     "rules": {
       "recommended": true,
     },
@@ -18,6 +18,14 @@
   "overrides": [
     { "include": ["client/src/main.tsx"], "linter": { "rules": { "style": { "noNonNullAssertion": "off" } } } },
     // TODO: improve types
-    { "include": ["client/src/lib/types.ts"], "linter": { "rules": { "suspicious": { "noExplicitAny": "off" } } } },
+    {
+      "include": ["client/src/lib/types.ts", "server/src/lib/verify.ts"],
+      "linter": { "rules": { "suspicious": { "noExplicitAny": "off" } } },
+    },
+    // TODO: improve types
+    {
+      "include": ["server/src/lib/verify.ts"],
+      "linter": { "rules": { "style": { "noUnusedTemplateLiteral": "off", "useTemplate": "off" } } },
+    },
   ],
 }

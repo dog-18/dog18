@@ -15,7 +15,7 @@ export const config: Config = {
     appName: 'Hello OpenPassport',
     requirements: [['older_than', '18']],
     devMode: process.env.NODE_ENV === 'development',
-    scope: '@hello_openpassport',
+    scope: 'prndog',
     size: 300,
   },
   cookie: { expiresAfterDays: 1, name: 'authorized' },
