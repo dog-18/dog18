@@ -1,6 +1,5 @@
 import { Home } from 'c/Home'
 import { ProtectedPage } from 'c/ProtectedPage'
-import { useAuthorized } from 'h/useAuthorized'
 import { useVerify } from 'h/useVerify'
 import { useEffect } from 'react'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
