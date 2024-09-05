@@ -1,13 +1,21 @@
+import { useStore } from 'h/useStore'
 import Cookies from 'js-cookie'
 import { config } from 'l/config'
-import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export const useAuthorized = () => {
-  const router = useRouter()
+  const { setAuthorized, setProof } = useStore()
 
   useEffect(() => {
-    const authorized = Cookies.get(config.cookie.name)
-    if (authorized !== 'true') router.push('/')
-  }, [router])
+    if (Cookies.get(config.cookie.name) === 'true')
+      setAuthorized(true)
+  }, [setAuthorized])
+
+  const logout = () => {
+    setAuthorized(false)
+    setProof(null)
+    Cookies.remove(config.cookie.name)
+  }
+
+  return { logout }
 }
