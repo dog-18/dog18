@@ -1,0 +1,13 @@
+assert_lefthook_installed: true
+output: [execution, failure, summary]
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: bun dprint fmt
+      stage_fixed: true
+    lint:
+      run: bun biome lint --config-path=.biome.jsonc --no-errors-on-unmatched
+    typecheck:
+      glob: '*.{cjs,js,jsx,mjs,ts,tsx}'
+      run: bun tsc-files --noEmit

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.3.3/schema.json",
+  // organize imports with dprint
+  "organizeImports": {
+    "enabled": false,
+  },
+  // format with dprint
+  "formatter": {
+    "enabled": false,
+  },
+  "linter": {
+    "enabled": true,
+    "ignore": ["dist"],
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "useLiteralKeys": "off",
+      },
+    },
+  },
+}

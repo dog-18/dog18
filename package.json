@@ -1,0 +1,30 @@
+{
+  "name": "ts-template",
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "barrelsby": "^2.8.1",
+    "bun-types": "^1.0.9",
+    "concurrently": "^8.2.2",
+    "dprint": "^0.47.2",
+    "lefthook": "^1.7.11",
+    "reflect-metadata": "^0.1.13",
+    "tsc-files": "^1.1.4",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "overrides": {
+    "braces": "^3.0.3"
+  },
+  "scripts": {
+    "build": "barrelsby --config .barrelsby.json && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
+    "build.docker": "docker build -t ts-template .",
+    "start": "bun run build && bun run start.prod",
+    "start.dev": "bun --watch --hot src/index.ts",
+    "start.docker": "docker run -it --rm ts-template",
+    "start.prod": "bun dist/src/index.js",
+    "test": "bun test --coverage",
+    "test.watch": "bun test --watch"
+  }
+}

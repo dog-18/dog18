@@ -1,0 +1,8 @@
+[install.lockfile]
+print = "yarn" # required for CI/CLI tools that don't support bun.lockb files
+
+[test]
+coverageSkipTestFiles = true
+coverageTreshold = { line = 0.9, function = 0.9, statement = 0.9 }
+preload = ["test/setup.ts"]
+root = "test"
