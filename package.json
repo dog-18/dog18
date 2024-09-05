@@ -1,5 +1,4 @@
 {
-  "name": "ts-template",
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "barrelsby": "^2.8.1",
@@ -14,17 +13,17 @@
   "engines": {
     "node": ">=20"
   },
+  "name": "prndog",
+  "private": true,
   "overrides": {
     "braces": "^3.0.3"
   },
   "scripts": {
-    "build": "barrelsby --config .barrelsby.json && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
-    "build.docker": "docker build -t ts-template .",
-    "start": "bun run build && bun run start.prod",
-    "start.dev": "bun --watch --hot src/index.ts",
-    "start.docker": "docker run -it --rm ts-template",
-    "start.prod": "bun dist/src/index.js",
-    "test": "bun test --coverage",
-    "test.watch": "bun test --watch"
-  }
+    "dev.ui": "bun --filter client dev",
+    "dev.server": "bun --filter server dev"
+  },
+  "workspaces": [
+    "server",
+    "client"
+  ]
 }

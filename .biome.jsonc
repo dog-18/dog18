@@ -13,9 +13,9 @@
     "ignore": ["dist"],
     "rules": {
       "recommended": true,
-      "complexity": {
-        "useLiteralKeys": "off",
-      },
     },
   },
+  "overrides": [
+    { "include": ["client/src/main.tsx"], "linter": { "rules": { "style": { "noNonNullAssertion": "off" } } } },
+  ],
 }
