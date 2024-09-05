@@ -5,6 +5,12 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": "src",
+    "paths": {
+      "c/*": ["components/*"],
+      "h/*": ["hooks/*"],
+      "l/*": ["lib/*"]
+    },
 
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
