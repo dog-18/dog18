@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import useSWRMutation from 'swr/mutation'
 
 export const useVerify = () => {
-  const { proof, setAuthorized } = useStore()
+  const { proof } = useStore()
   const { trigger: verify, data: valid, error, isMutating } = useSWRMutation<boolean>(
     config.verifServerUrl,
     async (url) =>
@@ -24,12 +24,11 @@ export const useVerify = () => {
 
   useEffect(() => {
     if (valid === true) {
-      setAuthorized(true)
       Cookies.set(config.cookie.name, JSON.stringify(true), {
         expires: config.cookie.expiresAfterDays,
       })
     }
-  }, [valid, setAuthorized])
+  }, [valid])
 
   return {
     error,

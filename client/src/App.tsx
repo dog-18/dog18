@@ -1,5 +1,6 @@
-import { Home } from 'c/Home'
-import { ProtectedPage } from 'c/ProtectedPage'
+import { Landing } from 'c/Landing'
+import { Login } from 'c/Login'
+import { X } from 'c/X'
 import { useVerify } from 'h/useVerify'
 import { useEffect } from 'react'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
@@ -16,8 +17,9 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/x' element={<ProtectedPage />} />
-      <Route path='/' element={<Home />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/x' element={<X />} />
+      <Route path='/' element={<Landing />} />
       {/* Catch-all route to redirect unknown paths to the home page */}
       <Route path='*' element={<Navigate replace to='/' />} />
     </Routes>

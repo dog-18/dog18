@@ -6,7 +6,7 @@ import { useVerify } from 'h/useVerify'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export function Home() {
+export function Login() {
   const navigate = useNavigate()
   const { error, valid } = useVerify()
 

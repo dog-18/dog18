@@ -2,17 +2,18 @@ import { useStore } from 'h/useStore'
 import Cookies from 'js-cookie'
 import { config } from 'l/config'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const useAuthorized = () => {
-  const { setAuthorized, setProof } = useStore()
+  const { setProof } = useStore()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    if (Cookies.get(config.cookie.name) === 'true')
-      setAuthorized(true)
-  }, [setAuthorized])
+    if (Cookies.get(config.cookie.name) !== 'true')
+      navigate('/')
+  }, [navigate])
 
   const logout = () => {
-    setAuthorized(false)
     setProof(null)
     Cookies.remove(config.cookie.name)
   }
