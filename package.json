@@ -18,6 +18,7 @@
     "braces": "^3.0.3"
   },
   "scripts": {
+    "dev": "concurrently --kill-others --names 'UI,Server' --prefix '[{name}]' --prefix-colors 'bgBlue.bold,bgGreen.bold' --success 'bgGreen.bold' --error 'bgRed.bold' --kill-others 'true' -- 'npm run dev.ui' 'npm run dev.server'",
     "dev.ui": "bun --filter client dev",
     "dev.server": "bun --filter server dev"
   },

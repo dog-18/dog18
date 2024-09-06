@@ -11,15 +11,16 @@ interface Config {
   verifServerUrl: string
 }
 
-const appName = 'dog18'
+const scope = process.env.SCOPE ?? ''
+if (scope === '') throw new Error('SCOPE is not defined')
 
 export const config: Config = {
-  appName,
+  appName: scope,
   openPassport: {
-    appName,
+    appName: scope,
     requirements: [['older_than', '18']],
     devMode: process.env.NODE_ENV === 'development',
-    scope: 'dog18',
+    scope,
     size: 300,
   },
   cookie: { expiresAfterDays: 1, name: 'authorized' },

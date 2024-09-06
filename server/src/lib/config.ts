@@ -10,6 +10,9 @@ interface Config {
   }
 }
 
+const scope = process.env.SCOPE ?? ''
+if (scope === '') throw new Error('SCOPE is not defined')
+
 export const config: Config = {
   cookie: {
     expiresAfterDays: 1,
@@ -18,6 +21,6 @@ export const config: Config = {
   verifier: {
     dev_mode: true,
     requirements: [['older_than', '18']],
-    scope: 'dog18',
+    scope,
   },
 }
