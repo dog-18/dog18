@@ -8,7 +8,7 @@ export const useVerify = () => {
   const { proof } = useStore()
   const { trigger: verify, data: valid, error, isMutating } = useSWRMutation<boolean>(
     config.verifServerUrl,
-    async (url) =>
+    async (url: string) =>
       fetch(url, {
         method: 'POST',
         headers: {
