@@ -1,7 +1,10 @@
+import { useAuthorized } from 'h/useAuthorized'
 import { config } from 'l/config'
 import { useNavigate } from 'react-router-dom'
 export const Header = () => {
   const navigate = useNavigate()
+  const { logout } = useAuthorized()
+
   return (
     <header className='navbar flex justify-between items-center p-4'>
       <div className='flex items-center'>
@@ -25,7 +28,15 @@ export const Header = () => {
             </button>
           </li>
           <li>
-            <button type='button'>Logout</button>
+            <button
+              onClick={() => {
+                logout()
+                navigate('/')
+              }}
+              type='button'
+            >
+              Logout
+            </button>
           </li>
         </ul>
       </nav>

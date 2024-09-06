@@ -2,6 +2,11 @@ import type { OpenPassport1StepInputs } from '@openpassport/sdk'
 import { type Action, action, createStore, createTypedHooks } from 'easy-peasy'
 
 interface StoreModel {
+  auth: {
+    data: boolean | null
+    set: Action<{ data: boolean | null }, boolean | null>
+  }
+
   proof: {
     data: OpenPassport1StepInputs | null
     set: Action<{ data: OpenPassport1StepInputs | null }, OpenPassport1StepInputs | null>
@@ -9,6 +14,12 @@ interface StoreModel {
 }
 
 const store = createStore<StoreModel>({
+  auth: {
+    data: null,
+    set: action((state, payload) => {
+      state.data = payload
+    }),
+  },
   proof: {
     data: null,
     set: action((state, payload) => {
