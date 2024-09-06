@@ -7,6 +7,8 @@ export const Landing = () => {
       <a
         className='underline text-center'
         href="https://en.wikipedia.org/wiki/On_the_Internet,_nobody_knows_you're_a_dog"
+        target='_blank'
+        rel='noopener noreferrer'
       >
         We won't know if you're a dog
       </a>
@@ -14,7 +16,9 @@ export const Landing = () => {
       <p className='text-center'>
         This website demoes gating restricted <s>adult</s>{' '}
         dog content by verifying a privacy-preserving proof of your age with{' '}
-        <a className='underline' href='https://openpassport.app'>openpasport</a>.
+        <a className='underline' href='https://openpassport.app' target='_blank' rel='noopener noreferrer'>
+          openpasport
+        </a>.
       </p>
       <p className='text-center'>
         The name of this website is a joke: <b>You won't see any adult content here.</b>
@@ -24,8 +28,20 @@ export const Landing = () => {
         <ol className='list-decimal list-inside space-y-2'>
           <li>
             Download the OpenPassport mobile app:
-            <a className='underline ml-2' href='https://apps.apple.com/us/app/proof-of-passport/id6478563710'>iOS</a>
-            <a className='underline ml-2' href='https://play.google.com/store/apps/details?id=com.proofofpassportapp'>
+            <a
+              className='underline ml-2'
+              href='https://apps.apple.com/us/app/proof-of-passport/id6478563710'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              iOS
+            </a>
+            <a
+              className='underline ml-2'
+              href='https://play.google.com/store/apps/details?id=com.proofofpassportapp'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Android
             </a>
           </li>

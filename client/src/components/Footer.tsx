@@ -3,7 +3,7 @@ export const Footer = () => (
     <div className='container mx-auto text-center'>
       <a
         className='text-white hover:text-gray-400'
-        href='https://github.com/sripwoud/prndog'
+        href='https://github.com/prndog/prndog'
         target='_blank'
         rel='noopener noreferrer'
       >
