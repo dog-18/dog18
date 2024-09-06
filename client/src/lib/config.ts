@@ -1,4 +1,5 @@
 interface Config {
+  appName: string
   openPassport: {
     appName: string
     devMode: boolean
@@ -10,12 +11,15 @@ interface Config {
   verifServerUrl: string
 }
 
+const appName = 'dog18'
+
 export const config: Config = {
+  appName,
   openPassport: {
-    appName: 'Hello OpenPassport',
+    appName,
     requirements: [['older_than', '18']],
     devMode: process.env.NODE_ENV === 'development',
-    scope: 'prndog',
+    scope: 'dog18',
     size: 300,
   },
   cookie: { expiresAfterDays: 1, name: 'authorized' },

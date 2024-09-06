@@ -1,16 +1,16 @@
+import { config } from 'l/config'
 import { useNavigate } from 'react-router-dom'
-
 export const Header = () => {
   const navigate = useNavigate()
   return (
     <header className='navbar flex justify-between items-center p-4'>
       <div className='flex items-center'>
-        <a className='logo text-white text-2xl font-bold mr-4' href='/'>PRNDOG</a>
+        <a className='logo text-white text-2xl font-bold mr-4' href='/'>{config.appName.toUpperCase()}</a>
       </div>
       <nav className='flex items-center'>
         <ul className='flex space-x-4 mr-8'>
           <li>
-            <a href='/x'>X pictures for dogs</a>
+            <a href='/x'>Restricted pictures</a>
           </li>
         </ul>
         <ul className='flex space-x-4'>

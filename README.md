@@ -1,6 +1,6 @@
-# Prndog
+# Dog18
 
-On the internet nobody knows you're dog, but we can know you're 18.\
+[On the internet nobody knows you're dog](https://en.wikipedia.org/wiki/On_the_Internet,_nobody_knows_you're_a_dog), but we'll make sure you're 18.\
 Built with [openpassport](https://openpassport.app).
 
 ## Getting Started

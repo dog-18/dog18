@@ -18,6 +18,6 @@ export const config: Config = {
   verifier: {
     dev_mode: true,
     requirements: [['older_than', '18']],
-    scope: 'prndog',
+    scope: 'dog18',
   },
 }
