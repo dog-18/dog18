@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-violet text-lavender;
+  }
+
+  button {
+    @apply bg-pink hover:bg-wisteria px-4 py-2 rounded;
+  }
+
+  a {
+    @apply hover:text-pink;
+  }
+}
