@@ -46,6 +46,7 @@ export class OpenPassportVerifierReport {
   }
 
   getUUID() {
+    // @ts-ignore
     return hexToUUID(this.user_identifier)
   }
 

@@ -19,5 +19,5 @@ export const config: Config = {
     size: 300,
   },
   cookie: { expiresAfterDays: 1, name: 'authorized' },
-  verifServerUrl: 'https://prndog-server.fly.dev',
+  verifServerUrl: process.env.NODE_ENV === 'production' ? 'https://prndog-server.fly.dev' : 'http://localhost:3000',
 }

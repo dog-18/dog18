@@ -24,7 +24,11 @@ const writeTempFile = async (filename: string, data: any) => {
 }
 
 const cleanUpTempFile = async (filePath: string) => {
-  await unlink(filePath)
+  try {
+    await unlink(filePath)
+  } catch (err) {
+    console.error('Failed to clean up temp file:', err)
+  }
 }
 
 // i experienced issues with web workers when using the snarkjs node module
@@ -40,7 +44,7 @@ export const runSnarkjsVerification = async (
     const proofPath = await writeTempFile('proof.json', proofData)
 
     const { stdout, stderr } = await execPromise(
-      `bunx snarkjs groth16 verify ${vkeyPath} ${publicSignalsPath} ${proofPath}`,
+      `pnpx snarkjs groth16 verify ${vkeyPath} ${publicSignalsPath} ${proofPath}`,
     )
 
     console.log(stdout)

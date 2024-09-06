@@ -1,14 +1,15 @@
-FROM oven/bun
+FROM node:20-alpine as base
 
-WORKDIR /app
+RUN apk update && apk upgrade && apk add dumb-init && apk add --no-cache bash
+WORKDIR app
 
-COPY package.json .
+COPY *.json .
+COPY src ./src
 
-RUN bun install --production
-
-COPY src src
-COPY tsconfig.json .
-
-CMD ["bun", "dev"]
+RUN npm i -g pnpm && pnpm i
 
 EXPOSE 3000
+ENV NODE_ENV=production
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["pnpm", "dev"]

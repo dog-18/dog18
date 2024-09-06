@@ -14,6 +14,7 @@ export function verifyDSCValidity(dscCertificate: forge.pki.Certificate, dev_mod
   )
   const value = authorityKeyIdentifierExt.value
   const byteArray = derToBytes(value)
+  // @ts-ignore
   const formattedValue = byteArray.map((byte) => byte.toString(16).padStart(2, '0')).join('')
   const formattedValueAdjusted = formattedValue.substring(8) // Remove the first '3016' from the formatted string
   const csca_pem = getCSCAPem(formattedValueAdjusted, dev_mode)

@@ -8,8 +8,10 @@ export const castToUUID = (bigInt: bigint) => hexToUUID(bigIntToHex(bigInt))
 
 export function derToBytes(derValue: string) {
   const bytes = []
-  for (let i = 0; i < derValue.length; i++)
+  for (let i = 0; i < derValue.length; i++) {
+    // @ts-ignore
     bytes.push(derValue.charCodeAt(i))
+  }
   return bytes
 }
 
