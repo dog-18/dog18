@@ -15,14 +15,14 @@ Built with [openpassport](https://openpassport.app).
 1. On mobile app:
    1. Open proof of passport app on your mobile device.
    2. Scan your passport (_Open Camera_) OR _use mock passport data > Generate passport data > Next_.
-1. On desktop:
+2. On desktop:
    1. Install deps: `bun i`.
-   2. Start local web client: `bun dev.ui`.
-   3. Start local verification server: `bun dev.server`
-   4. Open local app: [`localhost:5173`](http://localhost:5173).
-1. On mobile app
+   2. Start local web client and verification server: `bun dev`.
+   3. Open local wep client: [`localhost:5173`](http://localhost:5173).
+3. On mobile app
    1. Scan QR Code shown in desktop's browser.
    2. Tap _verify_.
+4. In the web client, you should be automatically be redirected to the protected page.
 
 ## What is going on?
 
