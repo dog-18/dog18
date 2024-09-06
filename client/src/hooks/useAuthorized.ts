@@ -9,8 +9,11 @@ export const useAuthorized = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (Cookies.get(config.cookie.name) !== 'true')
+    if (Cookies.get(config.cookie.name) !== 'true') {
+      // FIXME this renders twice
+      alert('Nice try! But we need to verify your age first (try clicking the Login button)')
       navigate('/')
+    }
   }, [navigate])
 
   const logout = () => {
