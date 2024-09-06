@@ -1,5 +1,4 @@
 import forge from 'node-forge'
-import { groth16 } from 'snarkjs'
 import { config } from './config'
 import { attributeToPosition, countryCodes, defaultOptions } from './constants'
 import { runSnarkjsVerification } from './run-snarkjs-verification'
@@ -58,19 +57,6 @@ const verifyRequirements = (
 
 const arraysEqual = (arr1: string[], arr2: string[]) =>
   arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index])
-
-const verifyProof = async (
-  vkey: any,
-  publicSignals: string[],
-  proof: any,
-  report: OpenPassportVerifierReport,
-) => {
-  groth16.verify(vkey, publicSignals, proof).then(valid => {
-    if (valid === false)
-      report.exposeAttribute('proof')
-  })
-  console.log('\x1b[32m%s\x1b[0m', `- proof verified`)
-}
 
 const verifyCertificate = (
   dsc: string,

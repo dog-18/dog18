@@ -1,5 +1,3 @@
 node_modules
 dist
-coverage
-lcov.info
-.env
+tsconfig.tsbuildinfo

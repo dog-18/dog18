@@ -6,8 +6,6 @@ export interface OpenPassportQRcodeProps {
   scope: string
   userId: string
   requirements: any[]
-  // TODO: add better type
-  // @ts-ignore
   onSuccess: (result: any) => void
   devMode?: boolean
 }
