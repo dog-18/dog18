@@ -19,5 +19,5 @@ export const config: Config = {
     size: 300,
   },
   cookie: { expiresAfterDays: 1, name: 'authorized' },
-  verifServerUrl: 'http://localhost:3000',
+  verifServerUrl: 'https://prndog-server.fly.dev',
 }
