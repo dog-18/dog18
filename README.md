@@ -36,7 +36,7 @@ Built with [openpassport](https://openpassport.app).
 6. The web client can now perform a verification ([`@openpassport/sdk`](https://github.com/zk-passport/openpassport) < [`snarkjs`](https://github.com/iden3/snarkjs)) of this proof or transfer this proof for an authentication server to verify it.
 7. Depending on the verification result, the web client can authorize access to some restricted content.
 
-## How it was built
+## How is it built?
 
 ### Reused as is
 
