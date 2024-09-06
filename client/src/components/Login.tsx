@@ -13,5 +13,28 @@ export function Login() {
       alert('Error')
   }, [error, navigate, valid])
 
-  return <OpenPassportQRCode userId={crypto.randomUUID()} />
+  return (
+    <div className='flex flex-col justify-center items-center'>
+      <OpenPassportQRCode userId={crypto.randomUUID()} />
+      <div>
+        Scan this 👆 with your OpenPassport mobile app:
+        <a
+          className='underline ml-2'
+          href='https://apps.apple.com/us/app/proof-of-passport/id6478563710'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          iOS
+        </a>
+        <a
+          className='underline ml-2'
+          href='https://play.google.com/store/apps/details?id=com.proofofpassportapp'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Android
+        </a>
+      </div>
+    </div>
+  )
 }
