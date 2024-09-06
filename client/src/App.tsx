@@ -1,4 +1,3 @@
-import { About } from 'c/About'
 import { Footer } from 'c/Footer'
 import { Header } from 'c/Header'
 import { Landing } from 'c/Landing'
@@ -23,7 +22,6 @@ function App() {
       <Header />
       <main className='flex-grow px-4'>
         <Routes>
-          <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login />} />
           <Route path='/x' element={<X />} />
           <Route path='/' element={<Landing />} />

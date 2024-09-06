@@ -8,8 +8,9 @@ export const Landing = () => {
         className='underline text-center'
         href="https://en.wikipedia.org/wiki/On_the_Internet,_nobody_knows_you're_a_dog"
       >
-        We won't know if you're a dog, but we will know if you're 18.
+        We won't know if you're a dog
       </a>
+      <p className='text-center'>But we will make sure you're 18.</p>
       <p className='text-center'>
         This website demoes gating restricted <s>adult</s>{' '}
         dog content by verifying a privacy-preserving proof of your age.

@@ -10,7 +10,7 @@ export const Header = () => {
       <nav className='flex items-center'>
         <ul className='flex space-x-4 mr-8'>
           <li>
-            <a href='/about'>About</a>
+            <a href='/x'>X pictures for dogs</a>
           </li>
         </ul>
         <ul className='flex space-x-4'>
