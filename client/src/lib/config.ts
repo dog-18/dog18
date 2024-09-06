@@ -11,8 +11,8 @@ interface Config {
   verifServerUrl: string
 }
 
-const scope = process.env.SCOPE ?? ''
-if (scope === '') throw new Error('SCOPE is not defined')
+const scope = import.meta.env.VITE_SCOPE ?? ''
+if (scope === '') throw new Error('VITE_SCOPE is not defined')
 
 export const config: Config = {
   appName: scope,
