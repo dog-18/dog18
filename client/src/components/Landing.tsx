@@ -13,7 +13,8 @@ export const Landing = () => {
       <p className='text-center'>But we will make sure you're 18.</p>
       <p className='text-center'>
         This website demoes gating restricted <s>adult</s>{' '}
-        dog content by verifying a privacy-preserving proof of your age.
+        dog content by verifying a privacy-preserving proof of your age with{' '}
+        <a className='underline' href='https://openpassport.app'>openpasport</a>.
       </p>
       <p className='text-center'>
         The name of this website is a joke: <b>You won't see any adult content here.</b>
