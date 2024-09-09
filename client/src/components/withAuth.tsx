@@ -12,7 +12,7 @@ export const withAuth = <P extends object>(Component: ComponentType<P>) => {
         alert('Nice try! But we need to verify your age first.')
         router.push('/login')
       }
-    }, [auth, router])
+    }, [loading])
     if (auth === false || loading === true)
       return null
 

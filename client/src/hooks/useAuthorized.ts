@@ -17,6 +17,7 @@ export const useAuthorized = () => {
   }
 
   useEffect(() => {
+    // TODO: of course this is unsecure because trivial to craft
     setAuth(Cookies.get(config.cookie.name) === 'true')
     setLoading(false)
   }, [setAuth])
