@@ -10,6 +10,7 @@ export const Header = () => {
   const pathname = usePathname()
 
   const render = () => {
+    if (pathname === '/login') return null
     if (loading === true) return <BeatLoader loading={true} size={10} color='#e0a3c8' />
 
     if (auth === true) {
