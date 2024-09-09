@@ -4,13 +4,12 @@ import { useQRCode } from 'h/useQRCode'
 import { useVerify } from 'h/useVerify'
 import { ProofStep } from 'l/constants'
 import type { Id } from 'l/types'
-import { type FC, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
+import { type FC, useState } from 'react'
 import { BounceLoader } from 'react-spinners'
 import LED from './LED'
 import { ProofAnimation } from './ProofAnimation'
 import { QRCodeDisplay } from './QrCodeDisplay'
-
 interface OpenPassportQRcodeProps {
   userId: Id
 }
@@ -18,20 +17,18 @@ interface OpenPassportQRcodeProps {
 export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
   userId,
 }) => {
-  const [sessionId, setSessionId] = useState(crypto.randomUUID())
-  const { valid, error } = useVerify()
-  const navigate = useNavigate()
+  const router = useRouter()
+  // FIXME avoid type assertion
+  const [sessionId, setSessionId] = useState<Id>(crypto.randomUUID() as Id)
+  const { valid } = useVerify()
   const qrElement = useQRCode({ userId, sessionId })
   const { proofStep, connectionStatus } = useProofSocket(sessionId)
 
   const handleAnimationComplete = () => {
-    setSessionId(crypto.randomUUID())
-    navigate('/x')
+    // FIXME avoid type assertion
+    setSessionId(crypto.randomUUID() as Id)
+    router.push('/x')
   }
-
-  useEffect(() => {
-    if (error) alert(error)
-  }, [error])
 
   const renderProofStatus = () => {
     if (valid) return <ProofAnimation onComplete={handleAnimationComplete} />

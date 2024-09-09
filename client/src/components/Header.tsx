@@ -1,10 +1,33 @@
+'use client'
 import { useAuthorized } from 'h/useAuthorized'
 import { config } from 'l/config'
-import { useNavigate } from 'react-router-dom'
+import Image from 'next/image'
+import Link from 'next/link'
 export const Header = () => {
-  const navigate = useNavigate()
-  const { logout } = useAuthorized()
+  const { auth, loading, logout } = useAuthorized()
 
+  const render = () => {
+    if (loading === true) return <Image alt='spinner' height={50} src='/spinner.svg' width={50} />
+    if (auth === true) {
+      return (
+        <>
+          <li className='self-center'>
+            <Link href='/x'>Restricted content</Link>
+          </li>
+          <li>
+            <button onClick={logout} type='button'>Logout</button>
+          </li>
+        </>
+      )
+    }
+    return (
+      <li>
+        <Link href='/login'>
+          <button className='hover:text-lavender' type='button'>Login</button>
+        </Link>
+      </li>
+    )
+  }
   return (
     <header className='navbar flex justify-between items-center p-4'>
       <div className='flex items-center'>
@@ -12,32 +35,7 @@ export const Header = () => {
       </div>
       <nav className='flex items-center'>
         <ul className='flex space-x-4 mr-8'>
-          <li>
-            <a href='/x'>Restricted pictures</a>
-          </li>
-        </ul>
-        <ul className='flex space-x-4'>
-          <li>
-            <button
-              onClick={() => {
-                navigate('/login')
-              }}
-              type='button'
-            >
-              Login
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                logout()
-                navigate('/')
-              }}
-              type='button'
-            >
-              Logout
-            </button>
-          </li>
+          {render()}
         </ul>
       </nav>
     </header>

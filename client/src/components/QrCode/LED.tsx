@@ -1,16 +1,17 @@
+import { SocketStatus } from 'l/constants'
 import type { FC } from 'react'
 
 interface LEDProps {
   size?: number
-  connectionStatus?: 'disconnected' | 'web_connected' | 'mobile_connected'
+  connectionStatus?: SocketStatus
 }
 
-const LED: FC<LEDProps> = ({ size = 10, connectionStatus = 'disconnected' }) => {
+const LED: FC<LEDProps> = ({ size = 10, connectionStatus = SocketStatus.DISCONNECTED }) => {
   const getColor = () => {
     switch (connectionStatus) {
-      case 'web_connected':
+      case SocketStatus.WEB_CONNECTED:
         return '#424AD8'
-      case 'mobile_connected':
+      case SocketStatus.MOBILE_CONNECTED:
         return '#31F040'
       default:
         return '#95a5a6'
@@ -26,7 +27,6 @@ const LED: FC<LEDProps> = ({ size = 10, connectionStatus = 'disconnected' }) => 
         backgroundColor: getColor(),
         boxShadow: `0 0 ${size * 1.5}px ${getColor()}`,
         transition: 'all 0.3s ease',
-        marginBottom: '15px',
       }}
     />
   )

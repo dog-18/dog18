@@ -44,3 +44,9 @@ export interface AppType {
   arguments: ArgumentsProve | ArgumentsRegister | ArgumentsDisclose
   getDisclosureOptions?: () => Record<string, string>
 }
+
+export enum Links {
+  ANDROID_APP = 'https://play.google.com/store/apps/details?id=com.proofofpassportapp',
+  GITHUB = 'https://github.com/dog18/dog18',
+  IOS_APP = 'https://apps.apple.com/us/app/proof-of-passport/id6478563710',
+}
