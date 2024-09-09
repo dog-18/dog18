@@ -13,8 +13,6 @@ export interface OpenPassportQRcodeProps {
 export type OnSuccessCb = OpenPassportQRcodeProps['onSuccess']
 export type Id = ReturnType<typeof randomUUID>
 
-export type ConnectionStatus = SocketStatus.DISCONNECTED | SocketStatus.WEB_CONNECTED | SocketStatus.MOBILE_CONNECTED
-
 export type CircuitName = 'prove' | 'register' | 'disclose'
 export interface ArgumentsProve {
   disclosureOptions: {

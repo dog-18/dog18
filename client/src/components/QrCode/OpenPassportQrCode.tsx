@@ -8,7 +8,6 @@ import type { Id } from 'l/types'
 import { useRouter } from 'next/navigation'
 import { type FC, useState } from 'react'
 import { BounceLoader } from 'react-spinners'
-import LED from './LED'
 import { ProofAnimation } from './ProofAnimation'
 import { QRCodeDisplay } from './QrCodeDisplay'
 
@@ -25,7 +24,7 @@ export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
   const [sessionId, setSessionId] = useState<Id>(crypto.randomUUID() as Id)
   const { valid } = useVerify()
   const qrElement = useQRCode({ userId, sessionId })
-  const { proofStep, connectionStatus } = useProofSocket(sessionId)
+  const proofStep = useProofSocket(sessionId)
 
   const handleAnimationComplete = () => {
     setAuth(true)
@@ -50,7 +49,6 @@ export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
 
   return (
     <div className='flex flex-col items-center'>
-      <LED connectionStatus={connectionStatus} />
       <div className='w-[300px] h-[300px] flex items-center justify-center'>
         {renderProofStatus()}
       </div>
