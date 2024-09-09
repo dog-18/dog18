@@ -3,17 +3,21 @@ import { useAuthorized } from 'h/useAuthorized'
 import { config } from 'l/config'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 export const Header = () => {
   const { auth, loading, logout } = useAuthorized()
+  const pathname = usePathname()
 
   const render = () => {
     if (loading === true) return <Image alt='spinner' height={50} src='/spinner.svg' width={50} />
     if (auth === true) {
       return (
         <>
-          <li className='self-center'>
-            <Link href='/x'>Restricted content</Link>
-          </li>
+          {!pathname.endsWith('/x') && (
+            <li className='self-center'>
+              <Link href='/x'>Restricted content</Link>
+            </li>
+          )}
           <li>
             <button onClick={logout} type='button'>Logout</button>
           </li>
