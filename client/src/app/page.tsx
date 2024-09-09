@@ -1,7 +1,9 @@
-import { useNavigate } from 'react-router-dom'
+'use client'
+import { ExternalLink } from 'c/ExternalLink'
+import { Links } from 'l/types'
+import Link from 'next/link'
 
-export const Landing = () => {
-  const navigate = useNavigate()
+export default function Home() {
   return (
     <div className='flex flex-col gap-y-2 items-center justify-center'>
       <a
@@ -23,42 +25,33 @@ export const Landing = () => {
       <p className='text-center'>
         <b>You won't see any adult content here (just cute puppies' pictures).</b>
       </p>
-      <div className='bg-wisteria p-6 rounded-lg shadow-lg space-y-4 text-s'>
+      <div className='bg-wisteria p-6 rounded-lg shadow-lg space-y-4 text-s mt-10'>
         <h2 className='text-xl font-bold text-violet'>Get Started</h2>
         <ol className='list-decimal list-inside space-y-2'>
           <li>
             Download the OpenPassport mobile app:
-            <a
+            <ExternalLink
               className='underline ml-2'
-              href='https://apps.apple.com/us/app/proof-of-passport/id6478563710'
-              target='_blank'
-              rel='noopener noreferrer'
+              href={Links.IOS_APP}
             >
               iOS
-            </a>
-            <a
+            </ExternalLink>
+            <ExternalLink
               className='underline ml-2'
-              href='https://play.google.com/store/apps/details?id=com.proofofpassportapp'
-              target='_blank'
-              rel='noopener noreferrer'
+              href={Links.ANDROID_APP}
             >
               Android
-            </a>
+            </ExternalLink>
           </li>
           <li>Add mock or real passport data in the mobile app</li>
           <li>
             <p className='inline'>Then click here to:</p>
-            <button
-              type='button'
-              className='bg-violet hover:bg-pink'
-              onClick={() => {
-                navigate('/login')
-              }}
-            >
-              login
-            </button>
+
+            <Link href='/login'>
+              <button type='button' className='bg-violet text-lavender hover:bg-pink'>Login</button>
+            </Link>
           </li>
-          <li>Scan the QR code and trigger the verifycation with your mobile app</li>
+          <li>Scan the QR code and trigger the verification with your mobile app</li>
         </ol>
       </div>
     </div>

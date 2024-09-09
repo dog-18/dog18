@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 interface Config {
   appName: string
   openPassport: {
@@ -11,8 +13,8 @@ interface Config {
   verifServerUrl: string
 }
 
-const scope = import.meta.env.VITE_SCOPE ?? ''
-if (scope === '') throw new Error('VITE_SCOPE is not defined')
+const scope = process.env.NEXT_PUBLIC_SCOPE ?? ''
+if (scope === '') throw new Error('NEXT_PUBLIC_SCOPE is not defined')
 
 export const config: Config = {
   appName: scope,
@@ -24,5 +26,10 @@ export const config: Config = {
     size: 300,
   },
   cookie: { expiresAfterDays: 1, name: 'authorized' },
-  verifServerUrl: process.env.NODE_ENV === 'production' ? 'https://dog18.fly.dev' : 'http://localhost:3000',
+  verifServerUrl: process.env.NODE_ENV === 'production' ? 'https://dog18.fly.dev' : 'http://localhost:3001',
+}
+
+export const metadata: Metadata = {
+  description: "Nobdy knows you're a dog, but we'll check you're 18",
+  title: 'Dog18',
 }

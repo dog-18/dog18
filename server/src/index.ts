@@ -1,6 +1,6 @@
 import { app } from './app'
 
-const port = Number.parseInt(process.env.PORT || '3000', 10)
+const port = Number.parseInt(process.env.PORT || '3001', 10)
 const host = process.env.HOST || 'localhost'
 
 app.listen(port, () => {

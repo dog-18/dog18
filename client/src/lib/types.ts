@@ -13,8 +13,6 @@ export interface OpenPassportQRcodeProps {
 export type OnSuccessCb = OpenPassportQRcodeProps['onSuccess']
 export type Id = ReturnType<typeof randomUUID>
 
-export type ConnectionStatus = SocketStatus.DISCONNECTED | SocketStatus.WEB_CONNECTED | SocketStatus.MOBILE_CONNECTED
-
 export type CircuitName = 'prove' | 'register' | 'disclose'
 export interface ArgumentsProve {
   disclosureOptions: {
@@ -26,7 +24,6 @@ export interface ArgumentsProve {
 export interface ArgumentsRegister {
   attestation_id: string
 }
-
 export interface ArgumentsDisclose {
   disclosureOptions: {
     older_than?: string
@@ -43,4 +40,19 @@ export interface AppType {
   circuit: CircuitName
   arguments: ArgumentsProve | ArgumentsRegister | ArgumentsDisclose
   getDisclosureOptions?: () => Record<string, string>
+}
+
+export enum Links {
+  ANDROID_APP = 'https://play.google.com/store/apps/details?id=com.proofofpassportapp',
+  GITHUB = 'https://github.com/dog18/dog18',
+  IOS_APP = 'https://apps.apple.com/us/app/proof-of-passport/id6478563710',
+}
+
+export interface OpenPassport1StepInputs {
+  dscProof?: {
+    publicSignals: string[]
+    proof: string[]
+  }
+  dsc?: string
+  circuit?: string
 }

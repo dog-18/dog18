@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import useSWRMutation from 'swr/mutation'
 
 export const useVerify = () => {
-  const { proof } = useStore()
+  const { proof, setAuth } = useStore()
   const { trigger: verify, data: valid, error, isMutating } = useSWRMutation<boolean>(
     config.verifServerUrl,
     async (url: string) =>

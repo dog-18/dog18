@@ -1,14 +1,15 @@
+import { ExternalLink } from 'c/ExternalLink'
+import { Links } from 'l/constants'
+
 export const Footer = () => (
-  <footer className='bg-gray-800 p-4'>
+  <footer className='p-4'>
     <div className='container mx-auto text-center'>
-      <a
-        className='text-white hover:text-gray-400 text-lg'
-        href='https://github.com/dog-18/dog18'
-        target='_blank'
-        rel='noopener noreferrer'
+      <ExternalLink
+        className='text-lg'
+        href={Links.GITHUB}
       >
         GitHub
-      </a>
+      </ExternalLink>
     </div>
   </footer>
 )

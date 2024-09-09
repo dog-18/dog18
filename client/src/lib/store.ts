@@ -1,5 +1,5 @@
-import type { OpenPassport1StepInputs } from '@openpassport/sdk'
 import { type Action, action, createStore, createTypedHooks } from 'easy-peasy'
+import type { OpenPassport1StepInputs } from 'l/types'
 
 interface StoreModel {
   auth: {

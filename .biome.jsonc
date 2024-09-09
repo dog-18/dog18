@@ -17,12 +17,16 @@
   },
   "overrides": [
     {
-      "include": ["client/src/main.tsx", "server/src/lib/verify.ts"],
+      "include": ["server/src/lib/verify.ts"],
       "linter": { "rules": { "style": { "noNonNullAssertion": "off" } } },
     },
     // TODO: improve types
     {
-      "include": ["client/src/lib/types.ts", "server/src/lib/verify.ts", "server/src/lib/run-snarkjs-verification.ts"],
+      "include": [
+        "client/src/lib/types.ts",
+        "server/src/lib/verify.ts",
+        "server/src/lib/run-snarkjs-verification.ts",
+      ],
       "linter": { "rules": { "suspicious": { "noExplicitAny": "off" } } },
     },
     // TODO: improve types
@@ -31,4 +35,9 @@
       "linter": { "rules": { "style": { "noUnusedTemplateLiteral": "off", "useTemplate": "off" } } },
     },
   ],
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+  },
 }

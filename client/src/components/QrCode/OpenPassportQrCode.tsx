@@ -1,13 +1,13 @@
 'use client'
 import { useProofSocket } from 'h/useProofSocket'
 import { useQRCode } from 'h/useQRCode'
+import { useStore } from 'h/useStore'
 import { useVerify } from 'h/useVerify'
 import { ProofStep } from 'l/constants'
 import type { Id } from 'l/types'
-import { type FC, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { BounceLoader } from 'react-spinners'
-import LED from './LED'
+import { useRouter } from 'next/navigation'
+import { type FC, useState } from 'react'
+import { BeatLoader } from 'react-spinners'
 import { ProofAnimation } from './ProofAnimation'
 import { QRCodeDisplay } from './QrCodeDisplay'
 
@@ -18,20 +18,20 @@ interface OpenPassportQRcodeProps {
 export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
   userId,
 }) => {
-  const [sessionId, setSessionId] = useState(crypto.randomUUID())
-  const { valid, error } = useVerify()
-  const navigate = useNavigate()
+  const { setAuth } = useStore()
+  const router = useRouter()
+  // FIXME avoid type assertion
+  const [sessionId, setSessionId] = useState<Id>(crypto.randomUUID() as Id)
+  const { valid } = useVerify()
   const qrElement = useQRCode({ userId, sessionId })
-  const { proofStep, connectionStatus } = useProofSocket(sessionId)
+  const proofStep = useProofSocket(sessionId)
 
   const handleAnimationComplete = () => {
-    setSessionId(crypto.randomUUID())
-    navigate('/x')
+    setAuth(true)
+    // FIXME avoid type assertion
+    setSessionId(crypto.randomUUID() as Id)
+    router.push('/x')
   }
-
-  useEffect(() => {
-    if (error) alert(error)
-  }, [error])
 
   const renderProofStatus = () => {
     if (valid) return <ProofAnimation onComplete={handleAnimationComplete} />
@@ -41,7 +41,7 @@ export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
       case ProofStep.MOBILE_CONNECTED:
         return qrElement ? <QRCodeDisplay qrElement={qrElement} /> : null
       case ProofStep.PROOF_GENERATION_STARTED:
-        return <BounceLoader loading={true} size={200} color='#94FBAB' />
+        return <BeatLoader loading={true} size={50} color='#e0a3c8' />
       default:
         return null
     }
@@ -49,7 +49,6 @@ export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
 
   return (
     <div className='flex flex-col items-center'>
-      <LED connectionStatus={connectionStatus} />
       <div className='w-[300px] h-[300px] flex items-center justify-center'>
         {renderProofStatus()}
       </div>
