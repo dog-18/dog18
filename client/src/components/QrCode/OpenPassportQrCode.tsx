@@ -1,6 +1,7 @@
 'use client'
 import { useProofSocket } from 'h/useProofSocket'
 import { useQRCode } from 'h/useQRCode'
+import { useStore } from 'h/useStore'
 import { useVerify } from 'h/useVerify'
 import { ProofStep } from 'l/constants'
 import type { Id } from 'l/types'
@@ -10,6 +11,7 @@ import { BounceLoader } from 'react-spinners'
 import LED from './LED'
 import { ProofAnimation } from './ProofAnimation'
 import { QRCodeDisplay } from './QrCodeDisplay'
+
 interface OpenPassportQRcodeProps {
   userId: Id
 }
@@ -17,6 +19,7 @@ interface OpenPassportQRcodeProps {
 export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
   userId,
 }) => {
+  const { setAuth } = useStore()
   const router = useRouter()
   // FIXME avoid type assertion
   const [sessionId, setSessionId] = useState<Id>(crypto.randomUUID() as Id)
@@ -25,6 +28,7 @@ export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
   const { proofStep, connectionStatus } = useProofSocket(sessionId)
 
   const handleAnimationComplete = () => {
+    setAuth(true)
     // FIXME avoid type assertion
     setSessionId(crypto.randomUUID() as Id)
     router.push('/x')
