@@ -7,7 +7,7 @@ import { ProofStep } from 'l/constants'
 import type { Id } from 'l/types'
 import { useRouter } from 'next/navigation'
 import { type FC, useState } from 'react'
-import { BounceLoader } from 'react-spinners'
+import { BeatLoader } from 'react-spinners'
 import { ProofAnimation } from './ProofAnimation'
 import { QRCodeDisplay } from './QrCodeDisplay'
 
@@ -41,7 +41,7 @@ export const OpenPassportQRCode: FC<OpenPassportQRcodeProps> = ({
       case ProofStep.MOBILE_CONNECTED:
         return qrElement ? <QRCodeDisplay qrElement={qrElement} /> : null
       case ProofStep.PROOF_GENERATION_STARTED:
-        return <BounceLoader loading={true} size={200} color='#94FBAB' />
+        return <BeatLoader loading={true} size={50} color='#e0a3c8' />
       default:
         return null
     }

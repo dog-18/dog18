@@ -25,7 +25,7 @@ export default function Home() {
       <p className='text-center'>
         <b>You won't see any adult content here (just cute puppies' pictures).</b>
       </p>
-      <div className='bg-wisteria p-6 rounded-lg shadow-lg space-y-4 text-s'>
+      <div className='bg-wisteria p-6 rounded-lg shadow-lg space-y-4 text-s mt-10'>
         <h2 className='text-xl font-bold text-violet'>Get Started</h2>
         <ol className='list-decimal list-inside space-y-2'>
           <li>

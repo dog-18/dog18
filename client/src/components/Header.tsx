@@ -1,15 +1,17 @@
 'use client'
 import { useAuthorized } from 'h/useAuthorized'
 import { config } from 'l/config'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { BeatLoader } from 'react-spinners'
+
 export const Header = () => {
   const { auth, loading, logout } = useAuthorized()
   const pathname = usePathname()
 
   const render = () => {
-    if (loading === true) return <Image alt='spinner' height={50} src='/spinner.svg' width={50} />
+    if (loading === true) return <BeatLoader loading={true} size={10} color='#e0a3c8' />
+
     if (auth === true) {
       return (
         <>
