@@ -1,8 +1,13 @@
 'use client'
 import { ExternalLink } from 'c/ExternalLink'
-import { OpenPassportQRCode } from 'c/QrCode/OpenPassportQrCode'
 import { Links } from 'l/constants'
 import type { Id } from 'l/types'
+import dynamic from 'next/dynamic'
+
+const OpenPassportQRCode = dynamic(
+  () => import('c/QrCode/OpenPassportQrCode').then(({ OpenPassportQRCode }) => OpenPassportQRCode),
+  { ssr: false },
+)
 
 export default function Login() {
   return (

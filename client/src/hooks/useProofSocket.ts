@@ -1,6 +1,6 @@
-import type { OpenPassport1StepInputs } from '@openpassport/sdk'
 import { useStore } from 'hooks/useStore'
 import { ProofStep, SOCKET_PATH, SOCKET_URL, SocketStatus } from 'l/constants'
+import type { OpenPassport1StepInputs } from 'l/types'
 import type { ConnectionStatus, Id } from 'l/types'
 import { useEffect, useState } from 'react'
 import io from 'socket.io-client'

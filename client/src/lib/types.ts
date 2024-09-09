@@ -26,7 +26,6 @@ export interface ArgumentsProve {
 export interface ArgumentsRegister {
   attestation_id: string
 }
-
 export interface ArgumentsDisclose {
   disclosureOptions: {
     older_than?: string
@@ -49,4 +48,13 @@ export enum Links {
   ANDROID_APP = 'https://play.google.com/store/apps/details?id=com.proofofpassportapp',
   GITHUB = 'https://github.com/dog18/dog18',
   IOS_APP = 'https://apps.apple.com/us/app/proof-of-passport/id6478563710',
+}
+
+export interface OpenPassport1StepInputs {
+  dscProof?: {
+    publicSignals: string[]
+    proof: string[]
+  }
+  dsc?: string
+  circuit?: string
 }
