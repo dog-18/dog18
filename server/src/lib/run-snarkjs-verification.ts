@@ -44,7 +44,7 @@ export const runSnarkjsVerification = async (
     const proofPath = await writeTempFile('proof.json', proofData)
 
     const { stdout, stderr } = await execPromise(
-      `pnpx snarkjs groth16 verify ${vkeyPath} ${publicSignalsPath} ${proofPath}`,
+      `npx snarkjs groth16 verify ${vkeyPath} ${publicSignalsPath} ${proofPath}`,
     )
 
     console.log(stdout)

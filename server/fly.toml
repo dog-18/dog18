@@ -8,13 +8,13 @@ primary_region = 'ams'
 
 [env]
   HOST = '0.0.0.0'
-  PORT = '3001'
+  PORT = 3001
   SCOPE = 'dog18'
 
 [build]
 
 [http_service]
-  internal_port = 3000
+  internal_port = 3001
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
