@@ -1,4 +1,4 @@
-import type { Links } from 'l/types'
+import type { Links } from 'l/constants'
 import Link from 'next/link'
 import type { FC, ReactNode } from 'react'
 

@@ -1,6 +1,6 @@
 'use client'
 import { ExternalLink } from 'c/ExternalLink'
-import { Links } from 'l/types'
+import { Links } from 'l/constants'
 import Link from 'next/link'
 
 export default function Home() {
