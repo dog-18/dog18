@@ -1,3 +1,5 @@
+import million from 'million/compiler'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -5,4 +7,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+export default million.next(nextConfig, { telemetry: false, rsc: true })
